@@ -1,0 +1,52 @@
+StrengthPvPHelper v2 — HOTFIX 2
+Minecraft 1.17.1 · Fabric Loader 0.14.21 · Java 17
+Автор: SynXT
+
+ЧТО ИСПРАВЛЕНО ПО ТВОЕМУ latest.log
+
+1) TitleScreenMixin больше НЕ делает @Shadow addDrawableChild на TitleScreen.
+   Этот метод объявлен в родительском Screen, а не в TitleScreen. Теперь вызов
+   выполняется через ScreenAddDrawableChildInvoker, который замикшен именно
+   в Screen и использует @Invoker("addDrawableChild"). Это устраняет точную
+   ошибку: "@Shadow method addDrawableChild ... was not located in TitleScreen".
+
+2) Удалён остаточный ItemCooldownEntryAccessor.java и его запись из Mixin JSON.
+   Ранее он уже приводил к падению на приватном ItemCooldownManager.Entry.
+
+3) Удалены устаревшие Eclipse launch-конфиги modid_client.launch и
+   modid_server.launch с жёстко прописанными путями D:\StrengthPvPHelper...
+   и именем проекта modid.
+
+4) Имя проекта синхронизировано в settings.gradle и .project.
+   Удалён устаревший .classpath с выходной папкой bin/default и абсолютными
+   путями библиотек от чужой среды. Убрана жёсткая привязка org.gradle.java.home.
+
+КАК УСТАНОВИТЬ И ПРОВЕРИТЬ
+
+1. Не копируй этот архив поверх старой папки. Распакуй в новую отдельную папку.
+2. В Eclipse: File > Import > Gradle > Existing Gradle Project.
+3. Выбери распакованную папку, в которой лежит settings.gradle.
+4. Проверь, что Gradle использует JDK 17.
+5. В Gradle Tasks выполни clean, затем build. Или запусти build-hotfix.bat.
+6. Для dev-запуска из Eclipse используй Gradle task runClient.
+7. Для проверки с твоей сборкой скопируй JAR из build/libs в фактическую папку
+   D:\legacy\Minecraft\game\mods и запусти профиль Legacy, а не runClient.
+
+ВАЖНО ПРО runClient
+
+Gradle runClient запускает отдельную dev-инстанцию проекта (папка run). Она не
+подхватывает автоматически моды из D:\legacy\Minecraft\game\mods.
+Поэтому в твоём логе список показывает strengthpvp и Fabric API, но не Sodium,
+Lithium и остальные моды сборки. Для проверки совместимости используй JAR в
+реальном профиле Legacy.
+
+ПРО КЛАССЫ
+
+Готовые .class намеренно не приложены: прежние бинарники были собраны в неверном
+режиме и переносить их дальше было бы небезопасно. Gradle должен сгенерировать
+новые классы и настоящий Mixin refmap на твоём JDK 17. В этой среде я не смог
+запустить твой Minecraft-клиент, поэтому не называю исправление подтверждённым
+тестом в игре.
+
+Если после этого будет новая ошибка, пришли самый первый блок [ERROR] из
+latest.log и весь вывод Gradle build. Не присылай только последние строки.

@@ -1,0 +1,45 @@
+StrengthPvPHelper v2 — исправление Mixin-сборки
+Minecraft 1.17.1 / Fabric Loader 0.14.21 / Java 17
+Автор проекта: SynXT
+
+ПОЧЕМУ ПРОИЗОШЁЛ КРАШ
+Старые .class были собраны не настоящим Mixin annotation processor, а временными
+заглушками. В результате @Accessor / @Inject / @At оказались записаны как
+RuntimeInvisibleAnnotations. Реальный Mixin не распознаёт такие методные
+аннотации как действующие accessor/injector-декларации. Из-за этого
+ItemCooldownEntryAccessor был воспринят как обычный интерфейсный mixin, и
+появилась ошибка «Entry is not an interface».
+
+Также предыдущий strengthpvp.refmap.json был пустым. Его обязан сгенерировать
+Mixin annotation processor при настоящей Gradle-сборке, иначе имена методов
+Yarn могут не совпасть с runtime/intermediary именами Minecraft.
+
+ЧТО ИЗМЕНЕНО В ЭТОМ АРХИВЕ
+- Исходники и mixin-конфигурация сохранены.
+- Удалены только старые .class и пустой/невалидный refmap из предыдущей сборки.
+- В build.gradle сохранены реальные зависимости sponge-mixin и annotationProcessor.
+- Gradle Loom настроен генерировать strengthpvp.refmap.json.
+- ItemCooldownEntryAccessor оставлен в исходниках: `targets` — корректный способ
+  указать private inner class в Mixin.
+
+КАК СОБРАТЬ НА ТВОЁМ WINDOWS 7 / ECLIPSE 2022-06
+1. Закрой Minecraft и удали старый StrengthPvPHelper из папки mods, если там лежит JAR.
+2. Распакуй архив в отдельную папку проекта (не поверх старого bin).
+3. Открой CMD в корне проекта — там, где лежит gradlew.bat.
+4. Выполни: gradlew.bat --no-daemon clean build
+5. Дождись BUILD SUCCESSFUL. Готовый JAR будет в build/libs/.
+6. Для запуска dev-клиента выполни: gradlew.bat runClient
+
+Для Eclipse: импортируй проект как Gradle Project (File > Import > Gradle > Existing
+Gradle Project), затем Gradle > Refresh Gradle Project. Не запускай старые .class из
+bin/main и не копируй их из прежних архивов. В этой версии bin/build outputs
+намеренно очищены, чтобы Eclipse/Gradle создал их заново с настоящими аннотациями.
+
+Если `--offline` сообщит, что зависимости не найдены, повтори команду без `--offline`
+(в этой инструкции команда указана без offline).
+
+ВАЖНО
+В текущей среде нет сети и настоящего Minecraft/Fabric Gradle cache, поэтому я не
+могу честно приложить валидно пересобранные .class или подтвердить запуск клиента.
+Этот архив устраняет первопричину неправильной сборки, но его нужно собрать указанной
+командой на машине, где доступны Gradle-зависимости.

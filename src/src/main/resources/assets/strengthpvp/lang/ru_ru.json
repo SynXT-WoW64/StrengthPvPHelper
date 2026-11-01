@@ -1,0 +1,20 @@
+{
+  "key.categories.strengthpvp": "StrengthPvPHelper",
+  "key.strengthpvp.open_menu": "Открыть меню StrengthPvPHelper",
+  "key.strengthpvp.item_counter": "Переключить счётчик предметов",
+  "key.strengthpvp.armor_hud": "Переключить HUD брони",
+  "key.strengthpvp.cooldown_hud": "Переключить кулдауны",
+  "key.strengthpvp.status_effects": "Переключить HUD эффектов",
+  "key.strengthpvp.totem_pop": "Переключить счётчик тотемов",
+  "key.strengthpvp.enemy_armor": "Переключить анализ брони врага",
+  "key.strengthpvp.projectile_predictor": "Переключить предиктор снарядов",
+  "key.strengthpvp.custom_hitboxes": "Переключить цветные хитбоксы",
+  "key.strengthpvp.hold_hit": "Переключить HoldHit",
+  "key.strengthpvp.view_cleaner": "Переключить чистый обзор",
+  "key.strengthpvp.danger_indicator": "Переключить индикатор опасности",
+  "key.strengthpvp.junk_dropper": "Переключить сброс мусора",
+  "key.strengthpvp.misclick_prevention": "Переключить защиту от миссклика",
+  "key.strengthpvp.target_info": "Переключить информацию о цели",
+  "key.strengthpvp.low_health_alert": "Переключить предупреждение о здоровье",
+  "key.strengthpvp.totem_refill_alert": "Переключить предупреждение о тотемах"
+}

@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.synxt.strengthpvp.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "strengthpvp.refmap.json",
+  "client": [
+    "GameRendererMixin",
+    "ParticleManagerMixin",
+    "LowFireOverlayMixin",
+    "FreeLookCameraMixin",
+    "FreeLookMouseMixin",
+    "TotemPopPacketMixin",
+    "ItemCooldownManagerAccessor",
+    "Matrix4fAccessor",
+    "BetterPvpHeldItemMixin",
+    "ScreenAddDrawableChildInvoker",
+    "TitleScreenMixin",
+    "AttackTrackerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

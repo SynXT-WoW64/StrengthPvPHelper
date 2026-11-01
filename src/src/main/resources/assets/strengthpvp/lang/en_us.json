@@ -1,0 +1,20 @@
+{
+  "key.categories.strengthpvp": "StrengthPvPHelper",
+  "key.strengthpvp.open_menu": "Open StrengthPvPHelper menu",
+  "key.strengthpvp.item_counter": "Toggle item counter",
+  "key.strengthpvp.armor_hud": "Toggle armor HUD",
+  "key.strengthpvp.cooldown_hud": "Toggle cooldown HUD",
+  "key.strengthpvp.status_effects": "Toggle status effects HUD",
+  "key.strengthpvp.totem_pop": "Toggle totem pop counter",
+  "key.strengthpvp.enemy_armor": "Toggle enemy armor analyzer",
+  "key.strengthpvp.projectile_predictor": "Toggle projectile predictor",
+  "key.strengthpvp.custom_hitboxes": "Toggle custom hitboxes",
+  "key.strengthpvp.hold_hit": "Toggle HoldHit",
+  "key.strengthpvp.view_cleaner": "Toggle view cleaner",
+  "key.strengthpvp.danger_indicator": "Toggle danger indicator",
+  "key.strengthpvp.junk_dropper": "Toggle junk dropper",
+  "key.strengthpvp.misclick_prevention": "Toggle misclick prevention",
+  "key.strengthpvp.target_info": "Toggle target info",
+  "key.strengthpvp.low_health_alert": "Toggle low health alert",
+  "key.strengthpvp.totem_refill_alert": "Toggle low totem alert"
+}
